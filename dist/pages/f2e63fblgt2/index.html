@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>分布式系统常见设计模式 | charming</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="web前端技术博客,简洁至上,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.c3f8d04e.css" as="style"><link rel="preload" href="/assets/js/app.bd94d1a8.js" as="script"><link rel="preload" href="/assets/js/2.82899674.js" as="script"><link rel="preload" href="/assets/js/17.0e3ab56a.js" as="script"><link rel="prefetch" href="/assets/js/10.44cfcfdf.js"><link rel="prefetch" href="/assets/js/11.a5a10eff.js"><link rel="prefetch" href="/assets/js/12.d194756e.js"><link rel="prefetch" href="/assets/js/13.3aebd337.js"><link rel="prefetch" href="/assets/js/14.0428d824.js"><link rel="prefetch" href="/assets/js/15.3931ed67.js"><link rel="prefetch" href="/assets/js/16.42b028e6.js"><link rel="prefetch" href="/assets/js/18.fc14baa8.js"><link rel="prefetch" href="/assets/js/19.648a9ae8.js"><link rel="prefetch" href="/assets/js/20.c82bfb7c.js"><link rel="prefetch" href="/assets/js/21.0c4443dc.js"><link rel="prefetch" href="/assets/js/3.2440227f.js"><link rel="prefetch" href="/assets/js/4.45fe6c92.js"><link rel="prefetch" href="/assets/js/5.91931b01.js"><link rel="prefetch" href="/assets/js/6.815bee85.js"><link rel="prefetch" href="/assets/js/7.8c59a895.js"><link rel="prefetch" href="/assets/js/8.87367026.js"><link rel="prefetch" href="/assets/js/9.504d153e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c3f8d04e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/EB-logo.png" alt="charming" class="logo"> <span class="site-name can-hide">charming</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/head.jpeg"> <div class="blogger-info"><h3>charmingz</h3> <span>开心的码农</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>分布式系统常见设计模式</span> <!----></p> <!----></section></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-33863c7e><div class="articleInfo" data-v-33863c7e><!----> <div class="info" data-v-33863c7e><div title="作者" class="author iconfont icon-touxiang" data-v-33863c7e><a href="https://github.com/CharmingZhou" target="_blank" title="作者" class="beLink" data-v-33863c7e>charmingz</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-33863c7e><a href="javascript:;" data-v-33863c7e>2022-10-01</a></div> <div title="分类" class="date iconfont icon-wenjian" data-v-33863c7e><a href="/categories/?category=%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F" data-v-33863c7e>分布式系统 </a></div></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">
+          分布式系统常见设计模式
+        </h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><p align="center"><img src="/img/1/bk.jpg" width="960" height="540"></p>
+分布式系统通用设计问题的相关设计模式。
+ <h1 id="_1-bloom-filters-布隆过滤器"><a href="#_1-bloom-filters-布隆过滤器" class="header-anchor">#</a> 1. Bloom Filters(布隆过滤器)</h1> <p><img src="/img/1/bloom.png" alt="Bloom Filters" title="bloom">
+布隆过滤器是一种节省空间的概率数据结构，应用于测试一个元素是否是一个集合成员。它应用于我们需要检测元素属于对象的场景。
+在BigTable(和Cassandra)中，任何读操作都需要从Tablet组成的SSTable中读取数据。如果这些SSTable不在内存中，读操作可能会执行很多磁盘操作以便读取所需的SSTable。为了减少磁盘访问次数，BigTable使用了布隆过滤器。</p> <h1 id="_2-consistent-hashing-一致性哈希"><a href="#_2-consistent-hashing-一致性哈希" class="header-anchor">#</a> 2. Consistent Hashing（一致性哈希）</h1> <p><img src="/img/1/Consistent.png" alt="Consistent Hashing" title="Consistent Hashing">
+一致性哈希允许你容易扩展，从而允许以有效的方式复制数据，从而实现更好的可用性和容错能力。
+通过哈希数据项的键来得到它在换上的位置，然后顺时针遍历环以找到位置大于该项位置的第一个节点，从而将每个由键表示的数据项分配给一个节点。与节点关联的节点是数据项的位置。
+一致性安徽新的主要优点是增量的稳定性：一个节点离开或达到集群只影响相邻的节点，其他节点不受影响。</p> <h1 id="_3-quorum-仲裁集"><a href="#_3-quorum-仲裁集" class="header-anchor">#</a> 3. Quorum(仲裁集)</h1> <p><img src="/img/1/Quorum.png" alt="Quorum" title="Quorum">
+在分布式环境中，仲裁集是在确认操作成功之前需要成功执行此分布式操作的最小服务器数。
+Cassandra，为了确保数据一致性，每个写入请求都可以配置为仅当数据已写入至少一个仲裁集（或大多数）副本节点时才成功。
+对于领导者选举，Chubby使用Paxos，它使用仲裁集来确保强大的一致性。
+Dynamo将写操作复制到系统中其他节点的任意仲裁集，而不是像Paxos那样严格的多数仲裁集。所有的读/写操作都是在首选项列表中的第一个NN健康节点上执行，该节点可能并不总是在遍历一致哈希环时遇到的第一个NN节点。</p> <h1 id="_4-leader-and-follower-领导追随者"><a href="#_4-leader-and-follower-领导追随者" class="header-anchor">#</a> 4. Leader and Follower(领导追随者)</h1> <p>为了实现系统数据管理的容错，需要在多个服务器上复制数据。
+在集群中选择一个服务器作为领导者。领导者负责代表整个集群做出决策，并将决策传播到所有其他服务器。
+在三到五个节点的集群中，就像在系统中达成共识类似，领导者选举可以在数据集群内部完成，而不依赖任何外部。领导者选举是在服务器启动时进行。每个服务在启动时都会启动领导者选举，并尝试选出一个领导者。在选出领导者之前，系统不接受任何客户端请求。</p> <h1 id="_5-heatbeat-心跳"><a href="#_5-heatbeat-心跳" class="header-anchor">#</a> 5. Heatbeat(心跳)</h1> <p>心跳机制用于检测现有领导者是否出现异常，以便可以启动心得领导者选举。</p> <h1 id="_6-fencing-屏障"><a href="#_6-fencing-屏障" class="header-anchor">#</a> 6. Fencing（屏障）</h1> <p>在领导追随者模式中，当领导者失败后，无法确定领导者是否已停止工作。比如，网络较慢或者网络分区会触发新的领导者选举，即使先前领导者仍在运行并认为它是活跃的领导者。
+屏障是指在以前处于活跃状态的领导者周围设置围栏，使其无法访问集群资源，从而停止为任何读/写请求提供服务。
+使用了如下两种技术：</p> <ul><li>资源屏障：系统会阻止先前处于活跃状态的领导者访问执行基本任务所需的资源。</li> <li>节点屏障：系统会阻止先前处于活跃状态的领导者访问所有资源。执行此操作的常见方法是关闭节点电源或重置节点。</li></ul> <h1 id="_7-wal-预写日志"><a href="#_7-wal-预写日志" class="header-anchor">#</a> 7. WAL (预写日志)</h1> <p>Write-ahead logging是解决操作系统中文件系统不一致的问题的复制解决方案。受数据管理系统启发， 这种方法首先将要执行的操作的摘要记录到“日志”中，然后将它们实际写入磁盘。在发生崩溃的时候，操作系统可以简单检查这个日志并从它停止的地方重新开始。</p> <h1 id="_8-segmented-log-分段日志"><a href="#_8-segmented-log-分段日志" class="header-anchor">#</a> 8. Segmented Log(分段日志)</h1> <p>为了更容易操作，我们可以把一个较大的文件拆分成多个小文件。
+单个日志文件在启动时读取可能会增长并成为性能瓶颈。旧的日志会定期清理，而对单个大文件进行清理操作很难。
+单个日志被拆分成多个段。日志文件会在特定大小进行滚动。使用日志分段，需要有一种简单的方法将逻辑日志偏移量（或日志序列号）映射到日志段文件。</p> <h1 id="_9-high-water-mark-高水位标记"><a href="#_9-high-water-mark-高水位标记" class="header-anchor">#</a> 9. High-Water mark（高水位标记）</h1> <p>跟踪领导者上的最后一个日志条目，该条目已成功复制到追随者的仲裁集。日志中此条目的索引称为高水位标记索引。领导者只暴露到高水位标记索引的数据。
+Kafka：为了吹了不可重复读取并确保数据一致，Kafka broker会跟踪高水位标记，即特定分区共享的最大偏移量。消费者只能看到高水位标记之前的消息。</p> <h1 id="_10-lease-租约"><a href="#_10-lease-租约" class="header-anchor">#</a> 10. Lease（租约）</h1> <p>租约就像一把锁，即使客户端断开，它也能工作。客户端请求有一定期限的租约，超过这个期限租约就到期了。如果客户端想延长租约，可以在租约到期之前续订租约。
+Chubby客户端与领导者保持有时间限制的会话租约。在此期间，领导者保证不会单向终止会话。</p> <h1 id="_11-gossip-protocol-流言传播协议"><a href="#_11-gossip-protocol-流言传播协议" class="header-anchor">#</a> 11. Gossip Protocol（流言传播协议）</h1> <p><img src="/img/1/Gossip.png" alt="Gossip" title="Gossip"></p> <p>Gossip协议是一种点对点的通信机制，在这种机制中，节点定期交换关于自己和它们所知道的其他节点的状态信息。
+每个节点每秒启动一轮Gossip轮转，来与另一个随机节点交换有关自己和其它节点的状态信息。</p> <h1 id="_12-phi-accrual-failure-detection-phi累计故障检测"><a href="#_12-phi-accrual-failure-detection-phi累计故障检测" class="header-anchor">#</a> 12. Phi Accrual Failure Detection（Phi累计故障检测）</h1> <p>此算法使用历史心跳信息使阈值自适应。一般的累计故障检测器不会判断服务器是否处于活动状态，而是输出有关服务器的可疑级别。
+Cassandra 使用Phi 累计故障检测器算法来确定集群中节点的状态。</p> <h1 id="_13-split-brain-脑裂"><a href="#_13-split-brain-脑裂" class="header-anchor">#</a> 13. Split-brain（脑裂）</h1> <p>分布式系统中有两个或多个活跃领导者的场景被称为脑裂。
+通过使用生成时钟可以解决脑裂问题，它只是一个单调递增的数字，用来表示服务器的生成。
+每次选出新领导者，时钟数字就会增加一次。这意味着，如果老的领导者的时钟数为“1”，则新领导者的时钟数为“2”。这个生成的数字会包含在从领导者发送到其他节点的每个请求中。通过这种方式，节点现在可以轻松地区分真正的领导者。
+Kafka：为了处理脑裂（我们可以有多个active controller broker），Kafka使用“纪元数”(Epoch number)，这只是一个单调递增的数字来表示服务器的生成。
+HDFS：Zookeeper用于保证任何时候只有一个NameNode处于活动状态。一个纪元号作为每个事务ID的一部分进行维护，以反映NameNode的生成。</p> <h1 id="_14-checksum-校验和"><a href="#_14-checksum-校验和" class="header-anchor">#</a> 14. Checksum（校验和）</h1> <p>在分布式系统中，在组件之间移动数据时，获取到的数据可能会损坏。
+计算校验和并将其与数据一起存储。
+要计算校验和，可以使用MD5、SHA-1、SHA-256或SHA-51等加密哈希函数。哈希函数接受输入数据并生成一个固定长度的字符串（包含字母和数字），这个字符串称为校验和。
+当系统存储一些数据时，它计算数据的校验和，并将校验和与数据一起存储。当客户端检索数据时，它会校验服务器接收到的数据是否与存储的校验和匹配。如果不匹配，客户端可以选择从另一个副本检索该数据。
+HDFS和Chubby将每个文件的校验和与数据一起存储。</p> <h1 id="_15-cap-theorem-cap定理"><a href="#_15-cap-theorem-cap定理" class="header-anchor">#</a> 15. CAP Theorem（CAP定理）</h1> <p>CAP定理指出，分布式系统不可能同时满足以下三个属性：
+一致性（C）、可用性(A)和分区容错性(P)。
+根据CAP定理，任何分布式系统都需要从三个属性中选择两个。这三个选项是CA、CP和AP。
+Dynamo：在CAP定理中，Dynamo属于AP类的系统，它会通过牺牲强一致性来实现高可用。
+BigTable：根据CAP定理，BigTable是一个CP系统，它具有严格一致的读取和写入。</p> <h1 id="_16-pacelec-theorem-pacelec定理"><a href="#_16-pacelec-theorem-pacelec定理" class="header-anchor">#</a> 16. PACELEC Theorem（PACELEC定理）</h1> <p><img src="/img/1/pacelec.png" alt="PACELEC" title="PACELEC">
+PACELC定理指出，在复制数据的系统中：</p> <ul><li>如果有一个分区(P)，在分布式系统可以在可用性和一致性（即A和C）之间进行权衡</li> <li>否则(E)，当系统在没有分区的情况下正常运行时，系统可以在延迟(L)和一致性(C)之间进行权衡
+定理(PAC)的第一部分与CAP定理相同，ELC是扩展。整个论点假设我们通过复制来保持高可用性。因此，当失败时，CAP定理占上风。但如果没有，我们仍然必须考虑复制系统的一致性和延迟之间的权衡。</li></ul> <h1 id="_17-hinted-handoff-提示移交"><a href="#_17-hinted-handoff-提示移交" class="header-anchor">#</a> 17. Hinted Handoff(提示移交)</h1> <p>如果节点关闭，系统会保留它们错过的所有请求的提示（或注释）。故障恢复后，将根据存储的提示将请求转发给它们。
+当节点关闭时，领导者会在本地磁盘上的文本文件中写入提示。此提示包含数据及其所属的节点信息。当领导者意识到它为其保留提示的节点已恢复时，它会将每个提示的写入请求转发到该节点。</p> <h1 id="_18-read-repaire-读修复"><a href="#_18-read-repaire-读修复" class="header-anchor">#</a> 18. Read Repaire（读修复）</h1> <p>在分布式系统中，数据跨多个节点复制，某些节点最终可能会拥有过时的数据。
+在读取操作期间修复过时的数据，因为此时，我们可以从多个节点读取数据以进行比较并找到具有过时数据的节点，此机制称为“读修复”。一旦知道具有旧数据的节点，读修复操作就会将较新版本的数据推送到具有较旧版本的节点。
+Cassandra和Dynamo使用“读修复”将最新版本的数据推送到具有旧版本的节点。</p> <h1 id="_19-merkle-trees-梅克尔树"><a href="#_19-merkle-trees-梅克尔树" class="header-anchor">#</a> 19. Merkle Trees（梅克尔树）</h1> <p><img src="/img/1/Merkle.png" alt="Merkle" title="Merkle">
+“读修复”可以在处理读取请求时消除冲突。但是，如果某个副本明显落后于其他副本，则可能需要很长时间才能解决冲突。
+副本可以包含大量数据。简单的拆分整个范围来计算校验和进行比较不太可行，因为要传输的数据实在太多。相反，我们可以使用梅克尔树来比较一个范围的副本。
+梅克尔树是哈希的二叉树，其中每个内部节点是其两个子节点的哈希，每个叶节点是原始数据一部分哈希。
+比较梅克尔树在概念上很简单：</p> <ul><li>比较两棵树的根哈希</li> <li>如果它们相等，就停止。</li> <li>在左右孩子节点上递归检测。
+为了实现反熵和后台解决冲突，Dynamo使用了梅克尔树。</li></ul></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/xugaoyi/vuepress-theme-vdoing/edit/master/docs/_posts/分布式系统/分布式系统常见设计模式.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="tags"><a href="/tags/?tag=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="标签">#设计模式</a></div> <!----></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:965957185@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/CharmingZhou" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://music.163.com/#/playlist?id=755597173" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>Evan Xu | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">跟随系统</li><li class="iconfont icon-rijianmoshi">浅色模式</li><li class="iconfont icon-yejianmoshi">深色模式</li><li class="iconfont icon-yuedu">阅读模式</li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><i class="close-but">×</i> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.bd94d1a8.js" defer></script><script src="/assets/js/2.82899674.js" defer></script><script src="/assets/js/17.0e3ab56a.js" defer></script>
+  </body>
+</html>
